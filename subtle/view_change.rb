@@ -1,23 +1,40 @@
 #!/usr/bin/ruby
 
 require 'open3'
-require './lib/subtle/ClientInfo.rb'
-require './lib/subtle/ViewInfo.rb'
-require './lib/subtle/TagInfo.rb'
+require 'subtle/subtlext'
 require './lib/rofi.rb'
 
-def client_menu(clientInfo)
-    tags = TagInfo.GetTags()
-    value = dmenu(tags, 'Select new Tag for Client')
+def client_menu(client)
+    tags = Subtlext::Tag.list
 
-    clientInfo.move_to_tag(tags[value])
+    tag_infos = Hash.new
+
+    tags.each do | tag |
+        tag_infos[tag] = tag.name
+    end
+
+    value = dmenu(tag_infos, 'Select new Tag for Client')
+
+    if(value)
+        client.tags=([value])
+    end
 end
 
 def main_menu()
-    clients = ClientInfo.GetClients()
-    value = dmenu(clients , 'Select Client')
+    clients = Subtlext::Client.list
 
-    client_menu(clients[value])
+    client_infos = Hash.new
+
+    clients.each do | client |
+        client_infos[client.win] = "#{client.name}"
+    end
+
+    value = dmenu(client_infos , 'Select Client')
+
+    if(value)
+        client = Subtlext::Client[pid: "#{value}"]
+        client_menu(client)
+    end
 end
 
 main_menu()

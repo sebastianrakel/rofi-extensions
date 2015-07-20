@@ -5,7 +5,6 @@ def dmenu(items, prompt=nil)
     args = Array.new
     hash = Hash.new
 
-    puts items
     if prompt
         args.push('-p')
         args.push("'#{prompt} -> '")
@@ -18,7 +17,6 @@ def dmenu(items, prompt=nil)
     index = 1
 
     items.each do |key, value|
-        p value
         line = "#{index}. #{value.to_s}\n"
         input += line 
 
@@ -31,6 +29,6 @@ def dmenu(items, prompt=nil)
 
     o, e, s = Open3.capture3(command, :stdin_data => input)
    
-    return hash[o.squeeze]
+    return hash[o]
 end
 
