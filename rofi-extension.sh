@@ -5,7 +5,7 @@ SCRIPTPATH=`dirname $SCRIPT`
 
 case $1 in
 "subtle_change_view")
-  ruby "${SCRIPTPATH}/subtle/subtle_rofi.rb"
+  ruby "${SCRIPTPATH}/subtle/subtle_rofi.rb -t"
   ;;
 *)
   echo "Select Option"
