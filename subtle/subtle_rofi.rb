@@ -2,7 +2,7 @@
 
 require 'open3'
 require 'subtle/subtlext'
-require './lib/rofi.rb'
+require_relative '../lib/rofi.rb'
 require 'optparse'
 
 def choose_tag(prompt=nil)
