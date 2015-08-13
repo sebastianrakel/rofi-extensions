@@ -7,6 +7,9 @@ case $1 in
 "subtle_change_view")
   ruby "${SCRIPTPATH}/subtle/subtle_rofi.rb" -t
   ;;
+"powercontrol")
+  ruby "${SCRIPTPATH}/powercontrol/powercontrol.rb"
+  ;;
 *)
   echo "Select Option"
   ;;
