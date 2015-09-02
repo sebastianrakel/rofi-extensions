@@ -4,7 +4,7 @@ require_relative '../lib/rofi.rb'
 require 'open3'
 
 def restart()
-    exec("systemctl restart")
+    exec("systemctl reboot")
 end
 
 def suspend()
