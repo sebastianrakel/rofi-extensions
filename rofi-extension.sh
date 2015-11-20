@@ -10,6 +10,9 @@ case $1 in
 "powercontrol")
   ruby "${SCRIPTPATH}/powercontrol/powercontrol.rb"
   ;;
+"streaming")
+  ruby "${SCRIPTPATH}/streaming/streaming.rb"
+  ;;
 *)
   echo "Select Option"
   ;;
